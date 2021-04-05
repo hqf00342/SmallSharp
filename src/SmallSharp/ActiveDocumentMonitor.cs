@@ -89,6 +89,12 @@ namespace SmallSharp.Build
                     File.ReadAllText(launchProfilesPath) == json)
                     return;
 
+                var targetDirectory = Path.GetDirectoryName(launchProfilesPath);
+                if(Directory.Exists(targetDirectory))
+                {
+                    Directory.CreateDirectory(targetDirectory);
+                }
+
                 File.WriteAllText(launchProfilesPath, json);
 
                 try
